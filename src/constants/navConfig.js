@@ -21,6 +21,21 @@ import { ROUTES } from './routes'
  */
 export const NAV_CONFIG = [
   {
+    name: 'Productos',
+    path: ROUTES.HOME,
+    Icon: BookOpenIcon
+  },
+
+
+  {
+    name: "Admin Productos",
+    path: ROUTES.ADMIN_PRODUCTS,
+    Icon: BookOpenIcon,
+    roles: ['ADMINISTRADOR']
+  },
+
+
+  {
     name: 'Dashboard',
     path: ROUTES.DASHBOARD,
     Icon: HomeIcon,

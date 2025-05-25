@@ -9,6 +9,8 @@ import AdminPage from './pages/AdminPage';
 import NotAuthorized from './pages/error/NotAuthorized';
 import LoginPage from './pages/auth/LoginPage';
 import Layout from './components/Layout';
+import CatalogPage from './pages/CatalogPage';
+import ProductTableAdmin from './pages/admin/ProductTableAdmin';
 function App() {
   return (
     <AuthProvider>
@@ -18,6 +20,8 @@ function App() {
           {/* --------------- VISTAS PUBLICAS -------------- */}
 
           <Route path="/auth/login" element={<LoginPage />} />
+
+          <Route path="/" element={<Layout><CatalogPage /></Layout>} />
 
           {/* ---------------------------------------------- */}
 
@@ -45,6 +49,17 @@ function App() {
             element={
               <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
                 <AdminPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/admin/productos"
+            element={
+              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+                <Layout>
+                  <ProductTableAdmin />
+                </Layout>
               </PrivateRoute>
             }
           />

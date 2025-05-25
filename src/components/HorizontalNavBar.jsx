@@ -11,8 +11,9 @@ export default function HorizontalNavBar() {
 
   // Filtra ítems según roles: sólo se muestran los que cumplen
   const navItems = NAV_CONFIG.filter(item =>
-    item.roles.some(role => userRoles.includes(role))
+    !item.roles || item.roles.some(role => userRoles.includes(role))
   )
+
 
   // Estado para controlar el menú móvil (hamburger)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -22,7 +23,7 @@ export default function HorizontalNavBar() {
       <div className="flex items-center justify-between gap-x-16">
         {/* Logo o título de la app */}
         <div className="text-lg font-bold text-gray-800">
-          MiKhipu
+          Libreria Jesus Amigo
         </div>
 
         {/* Botón del menú para móviles */}
