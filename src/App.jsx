@@ -11,6 +11,10 @@ import LoginPage from './pages/auth/LoginPage';
 import Layout from './components/Layout';
 import CatalogPage from './pages/CatalogPage';
 import ProductTableAdmin from './pages/admin/ProductTableAdmin';
+import EditorialPage from './pages/admin/EditorialPage';
+import { ROUTES } from './constants/routes';
+import AuthorPage from './pages/admin/AuthorPage';
+import CategoryPage from './pages/admin/CategoryPage';
 function App() {
   return (
     <AuthProvider>
@@ -34,6 +38,7 @@ function App() {
           
           */}
 
+
           <Route
             path="/dashboard"
             element={
@@ -54,11 +59,44 @@ function App() {
           />
 
           <Route
-            path="/admin/productos"
+            path={ROUTES.ADMIN_PRODUCTS}
             element={
               <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
                 <Layout>
                   <ProductTableAdmin />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.ADMIN_EDITORIALS}
+            element={
+              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+                <Layout>
+                  <EditorialPage />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.ADMIN_AUTHORS}
+            element={
+              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+                <Layout>
+                  <AuthorPage />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.ADMIN_CATEGORIES}
+            element={
+              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+                <Layout>
+                  <CategoryPage />
                 </Layout>
               </PrivateRoute>
             }

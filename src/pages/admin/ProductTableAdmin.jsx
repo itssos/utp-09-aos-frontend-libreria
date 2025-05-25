@@ -120,9 +120,15 @@ const ProductTableAdmin = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-blue-50 py-10 shadow-slate-300 shadow-2xl rounded-4xl">
       <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
-          Administración de Productos
-        </h1>
+        <div className=" md:flex md:justify-between md:items-center mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
+            Administración de Productos
+          </h1>
+          <ProductModal
+            trigger={<button className="bg-blue-500 text-white p-2 rounded-md cursor-pointer hover:bg-blue-400">Nuevo producto</button>}
+            onSaved={reloadTable}
+          />
+        </div>
         {/* Filtros */}
         <div className="bg-white rounded-xl shadow p-4 mb-8 flex flex-wrap gap-4 justify-center items-end">
           <input
@@ -193,10 +199,6 @@ const ProductTableAdmin = () => {
           >
             Limpiar filtros
           </button>
-          <ProductModal
-            trigger={<button className="bg-blue-500 text-white p-2 rounded-md cursor-pointer hover:bg-blue-400">Nuevo producto</button>}
-            onSaved={reloadTable}
-          />
 
         </div>
 

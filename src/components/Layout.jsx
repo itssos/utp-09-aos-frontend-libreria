@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
       {/* Footer */}
       <footer className="bg-gray-800 text-gray-100 py-4">
         <div className="container mx-auto text-center">
-          &copy; {new Date().getFullYear()} MiKhipu. Todos los derechos reservados.
+          &copy; {new Date().getFullYear()} Libreria Jesus Amigo. Todos los derechos reservados.
         </div>
       </footer>
     </div>
