@@ -6,6 +6,8 @@ export const ROUTES = {
   ADMIN_EDITORIALS: "/admin/editoriales",
   ADMIN_AUTHORS: "/admin/autores",
   ADMIN_CATEGORIES: "/admin/categorias",
+  ADMIN_STOCK_MOVEMENT: "/admin/inventario",
+  ADMIN_SALES: "/admin/ventas",
 
 
   LOGIN: "/auth/login",

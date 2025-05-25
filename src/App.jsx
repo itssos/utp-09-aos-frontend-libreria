@@ -15,6 +15,8 @@ import EditorialPage from './pages/admin/EditorialPage';
 import { ROUTES } from './constants/routes';
 import AuthorPage from './pages/admin/AuthorPage';
 import CategoryPage from './pages/admin/CategoryPage';
+import StockMovementPage from './pages/admin/StockMovementPage';
+import CashierPage from './pages/admin/CashierPage';
 function App() {
   return (
     <AuthProvider>
@@ -97,6 +99,28 @@ function App() {
               <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
                 <Layout>
                   <CategoryPage />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.ADMIN_STOCK_MOVEMENT}
+            element={
+              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+                <Layout>
+                  <StockMovementPage />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.ADMIN_SALES}
+            element={
+              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+                <Layout>
+                  <CashierPage />
                 </Layout>
               </PrivateRoute>
             }

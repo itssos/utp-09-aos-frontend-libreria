@@ -10,7 +10,8 @@ import {
   BookOpenIcon,
   ShoppingBagIcon,
   PencilIcon,
-  TagIcon
+  TagIcon,
+  ArrowsRightLeftIcon
 } from '@heroicons/react/24/outline'
 import { ROUTES } from './routes'
 
@@ -52,6 +53,18 @@ export const NAV_CONFIG = [
     name: "Categorias",
     path: ROUTES.ADMIN_CATEGORIES,
     Icon: TagIcon,
+    roles: ['ADMINISTRADOR']
+  },
+  {
+    name: "Inventario",
+    path: ROUTES.ADMIN_STOCK_MOVEMENT,
+    Icon: ArrowsRightLeftIcon,
+    roles: ['ADMINISTRADOR']
+  },
+  {
+    name: "Ventas",
+    path: ROUTES.ADMIN_SALES,
+    Icon: ArrowsRightLeftIcon,
     roles: ['ADMINISTRADOR']
   },
 

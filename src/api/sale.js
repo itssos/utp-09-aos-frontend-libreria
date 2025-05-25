@@ -40,8 +40,32 @@ import { api } from './apiHelper';
     }
  */
 
-// Consultar historial (con filtros de fecha opcionales, formato '2024-05-23T23:59:59')
-export const getSales                = (params)      => api.get('/api/sales', { params });
+
+/**
+ * Obtiene el historial de ventas filtrado, paginado y ordenado.
+ * 
+ * @param {Object} params - Parámetros de consulta (todos son opcionales):
+ * @param {number}   [params.userId]     - ID del usuario vendedor.
+ * @param {string}   [params.startDate]  - Fecha inicial (formato: 'yyyy-MM-ddTHH:mm:ss').
+ * @param {string}   [params.endDate]    - Fecha final (formato: 'yyyy-MM-ddTHH:mm:ss').
+ * @param {'asc'|'desc'} [params.sort]   - Orden por fecha de venta ('asc' o 'desc', default: 'desc').
+ * @param {number}   [params.page]       - Número de página (inicia en 0, default: 0).
+ * @param {number}   [params.size]       - Tamaño de página (default: 20).
+ * 
+ * Ejemplo de uso:
+ *   getSales({
+ *     userId: 5,
+ *     startDate: '2024-05-01T00:00:00',
+ *     endDate:   '2024-05-23T23:59:59',
+ *     sort: 'asc',
+ *     page: 1,
+ *     size: 30
+ *   })
+ * 
+ * Retorna:
+ *   Promise con respuesta paginada (puede contener { content, totalPages, ... }).
+ */
+export const getSales = (params) => api.get('/api/sales', { params });
 // Obtener venta por ID
 export const getSaleById             = id            => api.get(`/api/sales/${id}`);
 // Registrar venta
