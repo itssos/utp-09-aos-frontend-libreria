@@ -2,12 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import { getProducts } from "../../api/product";
 import { createSale, getSales } from "../../api/sale";
 // Si tienes getUsers, descomenta esto:
-// import { getUsers } from "../api/user";
+import { getUsers } from "../../api/user";
 import { toast } from "react-toastify";
 import { PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
-
-// Falso usuario (ajusta según login)
-const fakeUser = { id: 1, username: "cajero", fullName: "Cajero Demo" };
+import useAuth from "../../hooks/useAuth";
 
 function VentaTab({ products }) {
   const [search, setSearch] = useState("");
@@ -15,6 +13,7 @@ function VentaTab({ products }) {
   const [amountPaid, setAmountPaid] = useState("");
   const [loading, setLoading] = useState(false);
   const inputRef = useRef();
+  const { user } = useAuth();   
 
   const filteredProducts = products.filter(
     p =>
@@ -76,7 +75,7 @@ function VentaTab({ products }) {
     setLoading(true);
     try {
       const saleData = {
-        userId: fakeUser.id,
+        userId: user.id,
         amountPaid: parseFloat(amountPaid),
         items: cart.map(item => ({
           productId: item.id,
@@ -240,14 +239,7 @@ function HistorialTab() {
 
   // Puedes cargar usuarios reales con getUsers si lo tienes
   useEffect(() => {
-    // Si tienes getUsers, usa:
-    // getUsers().then(setUsers);
-    // O puedes simular:
-    setUsers([
-      { id: 1, fullName: "Cajero Demo" },
-      { id: 2, fullName: "Admin Demo" },
-      // ...otros usuarios
-    ]);
+    getUsers().then(setUsers);
   }, []);
 
   // Cargar ventas con filtros

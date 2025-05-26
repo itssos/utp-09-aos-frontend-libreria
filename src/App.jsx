@@ -17,6 +17,7 @@ import AuthorPage from './pages/admin/AuthorPage';
 import CategoryPage from './pages/admin/CategoryPage';
 import StockMovementPage from './pages/admin/StockMovementPage';
 import CashierPage from './pages/admin/CashierPage';
+import DashboardPage from './pages/admin/DashboardPage';
 function App() {
   return (
     <AuthProvider>
@@ -44,9 +45,9 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR', 'DOCENTE', 'ESTUDIANTE', 'APODERADO']}>
+              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
                 <Layout>
-                  <Dashboard />
+                  <DashboardPage />
                 </Layout>
               </PrivateRoute>
             }
