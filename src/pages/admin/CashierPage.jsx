@@ -121,7 +121,7 @@ function VentaTab({ products }) {
                 <div className="font-semibold text-gray-700">{prod.title}</div>
                 <div className="text-xs text-gray-500">{prod.code} — Stock: {prod.stock}</div>
               </div>
-              <div className="text-blue-700 font-bold text-lg">${prod.price}</div>
+              <div className="text-blue-700 font-bold text-lg">s/{prod.price}</div>
               <PlusIcon className="w-5 h-5 text-emerald-600 ml-2" />
             </div>
           ))
@@ -163,8 +163,8 @@ function VentaTab({ products }) {
                       }
                     />
                   </td>
-                  <td>${item.price}</td>
-                  <td>${(item.price * item.quantity).toFixed(2)}</td>
+                  <td>s/{item.price}</td>
+                  <td>s/{(item.price * item.quantity).toFixed(2)}</td>
                   <td>
                     <button
                       onClick={() => removeFromCart(item.id)}
@@ -187,7 +187,7 @@ function VentaTab({ products }) {
             <tr>
               <td className="font-semibold text-gray-700">Total a pagar:</td>
               <td className="text-right font-bold text-2xl text-blue-700">
-                ${total.toFixed(2)}
+                s/{total.toFixed(2)}
               </td>
             </tr>
           </tbody>
@@ -207,7 +207,7 @@ function VentaTab({ products }) {
         <div className="flex items-center gap-2">
           <span className="font-semibold">Vuelto:</span>
           <span className="text-lg font-bold text-emerald-600">
-            ${change >= 0 ? change.toFixed(2) : "0.00"}
+            s/{change >= 0 ? change.toFixed(2) : "0.00"}
           </span>
         </div>
         <button
@@ -367,13 +367,13 @@ function HistorialTab() {
                 <tr key={sale.id} className="border-t hover:bg-blue-50">
                   <td className="py-2 px-3">{new Date(sale.saleDate).toLocaleString()}</td>
                   <td className="py-2 px-3">{sale.user?.fullName || "—"}</td>
-                  <td className="py-2 px-3 text-center text-blue-700 font-bold">${sale.totalAmount}</td>
-                  <td className="py-2 px-3 text-center">${sale.amountPaid}</td>
-                  <td className="py-2 px-3 text-center">${sale.change}</td>
+                  <td className="py-2 px-3 text-center text-blue-700 font-bold">s/{sale.totalAmount}</td>
+                  <td className="py-2 px-3 text-center">s/{sale.amountPaid}</td>
+                  <td className="py-2 px-3 text-center">s/{sale.change}</td>
                   <td className="py-2 px-3">
                     {sale.items.map(item =>
                       <div key={item.id} className="text-xs">
-                        {item.product.title} x{item.quantity} <span className="text-gray-400">(${item.unitPrice})</span>
+                        {item.product.title} x{item.quantity} <span className="text-gray-400">(s/{item.unitPrice})</span>
                       </div>
                     )}
                   </td>

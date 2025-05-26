@@ -246,7 +246,7 @@ const ProductTableAdmin = () => {
                     <td className="py-2 px-4">{product.author?.name}</td>
                     <td className="py-2 px-4">{product.category?.name}</td>
                     <td className="py-2 px-4">{product.editorial?.name}</td>
-                    <td className="py-2 px-4 text-center text-emerald-600 font-semibold">${product.price}</td>
+                    <td className="py-2 px-4 text-center text-emerald-600 font-semibold">s/{product.price}</td>
                     <td className="py-2 px-4 text-center">
                       {product.stock > 0 ? (
                         <span className="inline-block bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded">{product.stock}</span>

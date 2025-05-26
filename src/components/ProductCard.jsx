@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
           {product.category?.name}
         </span>
         <div className="mt-2 flex justify-between items-center">
-          <span className="text-xl font-bold text-emerald-600">${product.price}</span>
+          <span className="text-xl font-bold text-emerald-600">s/{product.price}</span>
           <span
             className={`text-xs px-2 py-0.5 rounded-full ${
               product.stock > 0 ? "bg-emerald-100 text-emerald-700" : "bg-red-100 text-red-700"
