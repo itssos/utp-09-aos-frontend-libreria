@@ -26,7 +26,7 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       await login({ username, password });
-      navigate(ROUTES.DASHBOARD);
+      navigate(ROUTES.HOME);
     } catch (err) {
       setError(err.message);
     }

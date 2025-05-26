@@ -11,7 +11,11 @@ import {
   ShoppingBagIcon,
   PencilIcon,
   TagIcon,
-  ArrowsRightLeftIcon
+  ArrowsRightLeftIcon,
+  CurrencyDollarIcon,
+  Square2StackIcon,
+  ChartBarSquareIcon,
+  ShieldCheckIcon,
 } from '@heroicons/react/24/outline'
 import { ROUTES } from './routes'
 
@@ -28,58 +32,60 @@ export const NAV_CONFIG = [
     name: 'Productos',
     path: ROUTES.HOME,
     Icon: BookOpenIcon
+    // visible para todos
   },
-
-
   {
     name: "Admin Productos",
     path: ROUTES.ADMIN_PRODUCTS,
     Icon: ShoppingBagIcon,
-    roles: ['ADMINISTRADOR']
+    permissions: ['GET_PRODUCTS']
   },
   {
     name: "Editoriales",
     path: ROUTES.ADMIN_EDITORIALS,
     Icon: BookOpenIcon,
-    roles: ['ADMINISTRADOR']
+    permissions: ['GET_EDITORIALS']
   },
   {
     name: "Autores",
     path: ROUTES.ADMIN_AUTHORS,
     Icon: PencilIcon,
-    roles: ['ADMINISTRADOR']
+    permissions: ['GET_AUTHORS']
   },
   {
     name: "Categorias",
     path: ROUTES.ADMIN_CATEGORIES,
     Icon: TagIcon,
-    roles: ['ADMINISTRADOR']
+    permissions: ['GET_CATEGORIES']
   },
   {
     name: "Inventario",
     path: ROUTES.ADMIN_STOCK_MOVEMENT,
     Icon: ArrowsRightLeftIcon,
-    roles: ['ADMINISTRADOR']
+    permissions: ['GET_STOCK_MOVEMENTS']
   },
   {
     name: "Ventas",
     path: ROUTES.ADMIN_SALES,
-    Icon: ArrowsRightLeftIcon,
-    roles: ['ADMINISTRADOR']
+    Icon: CurrencyDollarIcon,
+    permissions: ['GET_SALES']
   },
-
-
-
   {
     name: 'Dashboard',
     path: ROUTES.DASHBOARD,
-    Icon: HomeIcon,
-    roles: ['ADMINISTRADOR', 'DOCENTE', 'ESTUDIANTE', 'APODERADO'],
+    Icon: ChartBarSquareIcon,
+    permissions: ['REPORTS_VIEW'],
+  },
+  {
+    name: 'Roles',
+    path: ROUTES.ADMIN_ROLES,
+    Icon: ShieldCheckIcon,
+    permissions: ['GET_ROLES']
   },
   {
     name: 'Usuarios',
-    path: ROUTES.ROLE_MANAGEMENT,
+    path: ROUTES.ADMIN_USERS,
     Icon: UsersIcon,
-    roles: ['ADMINISTRADOR'],
+    permissions: ['GET_PERSONS'],
   }
 ]

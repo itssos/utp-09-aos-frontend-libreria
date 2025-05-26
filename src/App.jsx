@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './routes/PrivateRoute';
 
-import Dashboard from './pages/Dashboard';
-import AdminPage from './pages/AdminPage';
 import NotAuthorized from './pages/error/NotAuthorized';
 import LoginPage from './pages/auth/LoginPage';
 import Layout from './components/Layout';
@@ -18,6 +16,8 @@ import CategoryPage from './pages/admin/CategoryPage';
 import StockMovementPage from './pages/admin/StockMovementPage';
 import CashierPage from './pages/admin/CashierPage';
 import DashboardPage from './pages/admin/DashboardPage';
+import RolesPage from './pages/admin/RolesPage';
+import UserPage from './pages/admin/UserPage';
 function App() {
   return (
     <AuthProvider>
@@ -43,20 +43,12 @@ function App() {
 
 
           <Route
-            path="/dashboard"
+            path={ROUTES.DASHBOARD}
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+              <PrivateRoute allowedPermissions={['REPORTS_VIEW']}>
                 <Layout>
                   <DashboardPage />
                 </Layout>
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
-                <AdminPage />
               </PrivateRoute>
             }
           />
@@ -64,7 +56,7 @@ function App() {
           <Route
             path={ROUTES.ADMIN_PRODUCTS}
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+              <PrivateRoute allowedPermissions={['GET_PRODUCTS']}>
                 <Layout>
                   <ProductTableAdmin />
                 </Layout>
@@ -75,7 +67,7 @@ function App() {
           <Route
             path={ROUTES.ADMIN_EDITORIALS}
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+              <PrivateRoute allowedPermissions={['GET_EDITORIALS']}>
                 <Layout>
                   <EditorialPage />
                 </Layout>
@@ -86,7 +78,7 @@ function App() {
           <Route
             path={ROUTES.ADMIN_AUTHORS}
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+              <PrivateRoute allowedPermissions={['GET_AUTHORS']}>
                 <Layout>
                   <AuthorPage />
                 </Layout>
@@ -97,7 +89,7 @@ function App() {
           <Route
             path={ROUTES.ADMIN_CATEGORIES}
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+              <PrivateRoute allowedPermissions={['GET_CATEGORIES']}>
                 <Layout>
                   <CategoryPage />
                 </Layout>
@@ -108,7 +100,7 @@ function App() {
           <Route
             path={ROUTES.ADMIN_STOCK_MOVEMENT}
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+              <PrivateRoute allowedPermissions={['GET_STOCK_MOVEMENTS']}>
                 <Layout>
                   <StockMovementPage />
                 </Layout>
@@ -119,7 +111,7 @@ function App() {
           <Route
             path={ROUTES.ADMIN_SALES}
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR']}>
+              <PrivateRoute allowedPermissions={['GET_SALES']}>
                 <Layout>
                   <CashierPage />
                 </Layout>
@@ -127,6 +119,27 @@ function App() {
             }
           />
 
+          <Route
+            path={ROUTES.ADMIN_ROLES}
+            element={
+              <PrivateRoute allowedPermissions={['GET_ROLES']}>
+                <Layout>
+                  <RolesPage />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path={ROUTES.ADMIN_USERS}
+            element={
+              <PrivateRoute allowedPermissions={['GET_PERSONS']}>
+                <Layout>
+                  <UserPage />
+                </Layout>
+              </PrivateRoute>
+            }
+          />
 
           <Route path="/not-authorized" element={<NotAuthorized />} />
 
@@ -134,9 +147,9 @@ function App() {
           <Route
             path="*"
             element={
-              <PrivateRoute allowedRoles={['ADMINISTRADOR', 'DOCENTE', 'ESTUDIANTE', 'APODERADO']}>
+              <PrivateRoute allowedPermissions={['REPORTS_VIEW']}>
                 <Layout>
-                  <Dashboard />
+                  <DashboardPage />
                 </Layout>
               </PrivateRoute>
             }

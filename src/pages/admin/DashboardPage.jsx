@@ -3,7 +3,7 @@ import {
   getTopSellingProducts,
   getSalesReport,
   getProductsLowStock
-} from "../../api/report"; // Ajusta según tu estructura
+} from "../../api/report";
 
 // Para fecha default (últimos 30 días)
 function formatDate(dt) {
@@ -75,13 +75,11 @@ const DashboardPage = () => {
     )
     : [];
 
-
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-10 px-3">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-blue-900 mb-8 text-center">
-          Dashboard de Ventas y Stock
+          Dashboard
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
